@@ -22,7 +22,7 @@ module CC
       end
 
       def ignore_fingerprint?(issue)
-        @config.fetch("exclude_fingerprints", []).include?(issue.fingerprint)
+        @config.fetch("exclude_fingerprints", []).include?(issue.fingerprint(expect_valid_locations: false))
       end
 
       def check_config(check_name)

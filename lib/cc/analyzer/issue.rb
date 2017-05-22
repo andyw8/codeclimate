@@ -25,8 +25,8 @@ module CC
         )
       end
 
-      def fingerprint
-        parsed_output.fetch("fingerprint") { default_fingerprint }
+      def fingerprint(expect_valid_locations: true)
+        parsed_output.fetch("fingerprint") { default_fingerprint(expect_valid_locations: expect_valid_locations) }
       end
 
       # Allow access to hash keys as methods
@@ -44,8 +44,10 @@ module CC
 
       attr_reader :output
 
-      def default_fingerprint
+      def default_fingerprint(expect_valid_locations: true)
         SourceFingerprint.new(self).compute
+      rescue SourceExtractor::InvalidLocation
+        raise if expect_valid_locations
       end
 
       def severity
