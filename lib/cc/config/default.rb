@@ -1,5 +1,5 @@
 module CC
-  module Config
+  class Config
     class Default
       EXCLUDE_PATTERNS = %w[
         config/

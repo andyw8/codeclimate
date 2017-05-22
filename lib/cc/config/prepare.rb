@@ -1,5 +1,5 @@
 module CC
-  module Config
+  class Config
     class Prepare
       class NoPrepareNeeded
         def fetch
@@ -29,7 +29,7 @@ module CC
         end
 
         def initialize(entries)
-          @entries = entries
+          @entries = Set.new(entries)
         end
 
         def each(&block)

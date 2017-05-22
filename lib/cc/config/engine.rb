@@ -1,5 +1,5 @@
 module CC
-  module Config
+  class Config
     class Engine
       DEFAULT_CHANNEL = "stable".freeze
 
